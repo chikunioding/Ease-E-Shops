@@ -6,7 +6,7 @@ import time
 
 class Test_002_login:
     baseURL=ReadConfig.getApplicationUrl()
-    path=r"C:\Users\Mayur\Desktop\LoginData.xlsx"
+    path=r"C:\Users\Mayur\Desktop\dragon.xlsx"
 
     def test_login(self,setup):
         self.driver= setup
@@ -20,18 +20,12 @@ class Test_002_login:
             self.username=XLUtils.readData(self.path,'Sheet1',r,1)
             self.password=XLUtils.readData(self.path,'Sheet1',r,2)
 
-            self.lp.setloginlink()
+            #self.lp.setloginlink()
             self.lp.setUsername(self.username)
             self.lp.setPassword(self.password)
             self.lp.setLoginbutton()
+            time.sleep(2)
             self.driver.close()
-            time.sleep(4)
-
-            act_title=self.driver.title
-            exp_title="Lara Classified - Qspiders all in one"
-
-            assert act_title==exp_title
-            print("test case is passed")
 
 
 
